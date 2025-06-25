@@ -1,0 +1,11 @@
+[
+  { "name": "Cybersecurity", "level": "Basic" },
+  { "name": "Python Programming", "level": "Intermediate" },
+  { "name": "Web Development", "level": "Intermediate" },
+  { "name": "Django", "level": "Basic" },
+  { "name": "Project Management", "level": "Intermediate" },
+  { "name": "Teamwork", "level": "Proficient" },
+  { "name": "Leadership", "level": "Advanced" },
+  { "name": "Canva Designing", "level": "Intermediate" },
+  { "name": "Event Coordination", "level": "Advanced" }
+]
