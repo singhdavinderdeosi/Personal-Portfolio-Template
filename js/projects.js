@@ -8,16 +8,37 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fetch projects.json data
   fetch("data/projects.json")
     .then(res => res.json())
-    .then(data => {
-      allProjects = data;
+    .then(localProjects => {
+      allProjects = [...localProjects];
       renderProjects(allProjects);
+      fetchGitHubProjects(); // Fetch GitHub repos after local load
     })
     .catch(err => {
       container.innerHTML = `<p style="color:#f66;">⚠️ Failed to load projects.</p>`;
       console.error("Error loading projects.json:", err);
     });
 
-  // Render given projects to DOM
+  // Fetch GitHub repositories
+  function fetchGitHubProjects() {
+    const username = "YOUR_GITHUB_USERNAME"; // replace with your GitHub username
+    fetch(`https://api.github.com/users/${username}/repos`)
+      .then(res => res.json())
+      .then(repos => {
+        const repoProjects = repos.map(repo => ({
+          title: repo.name,
+          description: repo.description || "No description provided.",
+          link: repo.html_url,
+          category: "github"
+        }));
+        allProjects = [...allProjects, ...repoProjects];
+        renderProjects(allProjects);
+      })
+      .catch(err => {
+        console.error("Error fetching GitHub repositories:", err);
+      });
+  }
+
+  // Render projects to DOM
   function renderProjects(projects) {
     container.innerHTML = "";
 
@@ -34,11 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `).join("");
 
-    // Re-apply scroll animation
     animateFadeIn();
   }
 
-  // Scroll animation setup
+  // Fade-in animation
   function animateFadeIn() {
     const fadeElements = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver(entries => {
@@ -59,8 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedCategory = categorySelect.value.toLowerCase();
 
     const filtered = allProjects.filter(project => {
-      const matchesKeyword = project.title.toLowerCase().includes(keyword) || project.description.toLowerCase().includes(keyword);
-      const matchesCategory = selectedCategory === "all" || (project.category || "").toLowerCase() === selectedCategory;
+      const matchesKeyword = project.title.toLowerCase().includes(keyword) ||
+                             project.description.toLowerCase().includes(keyword);
+      const matchesCategory = selectedCategory === "all" ||
+                              (project.category || "").toLowerCase() === selectedCategory;
       return matchesKeyword && matchesCategory;
     });
 
@@ -76,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Input listeners
+  // Event listeners
   searchInput.addEventListener("input", debounce(filterProjects));
   categorySelect.addEventListener("change", filterProjects);
 });

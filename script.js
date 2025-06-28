@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 🌐 GitHub API
   const githubContainer = document.getElementById("github-repo-list");
   if (githubContainer) {
-    const GITHUB_USERNAME = "singhdavinderdeosi";
+    const GITHUB_USERNAME = "your-github-username"; // Replace with your GitHub username
     fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated`)
       .then(res => res.json())
       .then(data => {

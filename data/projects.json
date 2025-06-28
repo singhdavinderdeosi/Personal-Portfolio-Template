@@ -1,20 +1,14 @@
 [
   {
-    "title": "SecureFileX",
-    "description": "Encrypt & securely share files with built-in audit logging.",
-    "link": "https://github.com/singhdavinderdeosi/securefilex",
-    "category": "cybersecurity"
+    "title": "Project Title",
+    "description": "Description.",
+    "link": "Repository Link",
+    "category": "Category Name"
   },
   {
-    "title": "Total Recon",
-    "description": "OSINT reconnaissance toolkit for bug bounty and audits.",
-    "link": "https://github.com/singhdavinderdeosi/total-recon",
-    "category": "Tool"
-  },
-{
-    "title": "Personal Portfolio",
-    "description": "my personal portfolio website, built with **HTML, CSS, and JavaScript.",
-    "link": "https://github.com/singhdavinderdeosi/Personal-Portfolio.git",
-    "category": "Web"
+    "title": "Project Title",
+    "description": "Description.",
+    "link": "Repository Link",
+    "category": "Category Name"
   }
 ]
