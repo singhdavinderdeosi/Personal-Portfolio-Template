@@ -12,7 +12,7 @@ Change your description according to your need
 ✅ HTML, CSS, JavaScript only (no frameworks)  
 ✅ Project showcase section  
 ✅ About and skills section  
-✅ Contact form (static or can integrate with Formspree)  
+✅ Contact form 
 ✅ Smooth animations and transitions  
 ✅ Easy to customize colors, fonts, and sections
 
